@@ -19,6 +19,8 @@ struct NewDataSheet: View {
     
     @State private var image = Image(systemName: "photo")
     
+    @FocusState private var focus: Bool
+    
     // MARK: - BODY
     var body: some View {
         NavigationView {
@@ -33,8 +35,8 @@ struct NewDataSheet: View {
                             isActive:$isImagePicker,
                             label: {
                                 Text("")
-                            })
-                    }
+                            }) //NavigationLink
+                    } //HSTACK
                     HStack{
                         Text("料理名")
                         TextEditor(text: $recipeModel.recipeName)
@@ -42,7 +44,9 @@ struct NewDataSheet: View {
                             .background(Color.primary.opacity(0.1))
                             .frame(height: 100)
                             .cornerRadius(10)
-                    }
+                            .focused($focus)
+                            
+                    } //HSTACK
                     .padding()
                     
                     HStack(spacing: 10){
@@ -53,7 +57,8 @@ struct NewDataSheet: View {
                             .background(Color.primary.opacity(0.1))
                             .frame(width:300 ,height:100)
                             .cornerRadius(10)
-                    }
+                            .focused($focus)
+                    } // HSTACK
                     .padding()
                     
                     Button(action: {recipeModel.writeData(context: context)}, label: {
@@ -70,10 +75,20 @@ struct NewDataSheet: View {
                         .frame(width:UIScreen.main.bounds.width - 30)
                         .background(Color.blue)
                         .cornerRadius(50)
-                    })
+                    }) //BUTTON
                     .padding()
                     .disabled(recipeModel.recipeName == "" ? true : false)
                     .opacity(recipeModel.recipeName == "" ? 0.5 : 1)
+                } //VSTACK
+                .toolbar {
+                    ToolbarItem(placement: .keyboard) {
+                        HStack {
+                            
+                            Button("Done") {
+                                self.focus = false
+                            }
+                        }
+                    }
                 }
             }
         }

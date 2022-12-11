@@ -13,7 +13,6 @@ class RecipeViewModel: ObservableObject {
     @Published var ingredient = ""
     @Published var date = Date()
     @Published var imageData: Data = Data.init()
-    @Published var events: [Date] = []
     
     @Published var isNewData = false
     @Published var updateItem: Recipe!
@@ -25,7 +24,6 @@ class RecipeViewModel: ObservableObject {
             updateItem.recipeName = recipeName
             updateItem.ingredient = ingredient
             updateItem.imageData = imageData
-            self.events.append(updateItem.date!)
             
             try! context.save()
             
@@ -42,7 +40,7 @@ class RecipeViewModel: ObservableObject {
         newRecipe.recipeName = recipeName
         newRecipe.ingredient = ingredient
         newRecipe.imageData = imageData
-        events.append(newRecipe.date!)
+        
         
         do {
             try context.save()

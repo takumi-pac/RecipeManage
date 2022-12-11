@@ -58,7 +58,7 @@ struct CameraView: View {
         .onAppear(){
             loadImage()
         }
-        .navigationBarTitle("Add Task", displayMode: .inline)
+        .navigationBarTitle("Add Recipe", displayMode: .inline)
     }
     
     func loadImage() {
