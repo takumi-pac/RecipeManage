@@ -48,12 +48,14 @@ struct RecipeListView: View {
                                         }
                                         .padding(.horizontal)
                                         
+                                        Text("料理名")
                                         Text(recipe.recipeName ?? "")
                                             .font(.title)
                                             .fontWeight(.bold)
                                             .padding(.horizontal)
                                         Divider()
                                         
+                                        Text("材料名")
                                         Text(recipe.ingredient ?? "")
                                             .font(.footnote)
                                             .fontWeight(.bold)
