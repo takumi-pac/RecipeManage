@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		010CD3BB29529E930038D78C /* RandamMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010CD3BA29529E930038D78C /* RandamMenuView.swift */; };
 		01C3777229220E0B0078190E /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C3777129220E0B0078190E /* CalendarView.swift */; };
 		01F6E3B9291A480300C5EAC9 /* RecipeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F6E3B8291A480300C5EAC9 /* RecipeListView.swift */; };
 		01FB079429112076007988DD /* RecipeManageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FB079329112076007988DD /* RecipeManageApp.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		010CD3BA29529E930038D78C /* RandamMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandamMenuView.swift; sourceTree = "<group>"; };
 		01C3777129220E0B0078190E /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		01F6E3B8291A480300C5EAC9 /* RecipeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListView.swift; sourceTree = "<group>"; };
 		01FB079029112076007988DD /* RecipeManage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeManage.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,6 +112,7 @@
 				01FB07AE29113E7F007988DD /* CameraView.swift */,
 				01F6E3B8291A480300C5EAC9 /* RecipeListView.swift */,
 				01C3777129220E0B0078190E /* CalendarView.swift */,
+				010CD3BA29529E930038D78C /* RandamMenuView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				01F6E3B9291A480300C5EAC9 /* RecipeListView.swift in Sources */,
 				01FB079429112076007988DD /* RecipeManageApp.swift in Sources */,
 				01FB07AF29113E7F007988DD /* CameraView.swift in Sources */,
+				010CD3BB29529E930038D78C /* RandamMenuView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
