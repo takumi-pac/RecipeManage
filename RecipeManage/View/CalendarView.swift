@@ -15,6 +15,7 @@ struct CalendarTestView: UIViewRepresentable {
     @Binding var selectedDate: String
     
     func makeUIView(context: Context) -> FSCalendar {
+        let start = Date()
         
         typealias UIViewType = FSCalendar
         
@@ -48,6 +49,11 @@ struct CalendarTestView: UIViewRepresentable {
         
         fsCalendar.appearance.borderRadius = 0 //本日・選択日の塗りつぶし角丸量
         
+        //重い処理を書く
+
+        let elapsed = Date().timeIntervalSince(start)
+        print(elapsed)
+        
         return fsCalendar
     }
     
@@ -62,7 +68,7 @@ struct CalendarTestView: UIViewRepresentable {
     class Coordinator: NSObject, FSCalendarDelegate, FSCalendarDataSource {
         var parent: CalendarTestView
         var datesWithEvents: Set<String> = []
-        
+        var eventsFlg: Bool = false
         let formatter = DateFormatter()
         
         init(_ parent:CalendarTestView){
@@ -70,48 +76,73 @@ struct CalendarTestView: UIViewRepresentable {
         }
         
         func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+            let start = Date()
+
             let tmpDate = Calendar(identifier: .gregorian)
             let year = tmpDate.component(.year, from: date)
             let month = tmpDate.component(.month, from: date)
             let day = tmpDate.component(.day, from: date)
             parent.selectedDate = "\(year)/\(month)/\(day)"
+
+            let elapsed = Date().timeIntervalSince(start)
+            print("didselect: ")
+            print(elapsed)
         }
         
         func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy/MM/dd"
+            let start = Date()
+
+            print(date)
+            formatter.dateFormat = "yyyy/M/d"
             formatter.calendar = Calendar(identifier: .gregorian)
             formatter.timeZone = TimeZone.current
             formatter.locale = Locale.current
-            let calendarDay = formatter.string(from: date)
             
-            let results = getAllData()
             
-            if results.count > 0 {
-                for i in 0..<results.count {
-                    if i == 0 {
-                        datesWithEvents = [formatter.string(from:results[i].date!)]
-                    } else {
-                        datesWithEvents.insert(formatter.string(from:results[i].date!))
-                    }
-                }
-            } else {
-                datesWithEvents = []
+            let elapsed = Date().timeIntervalSince(start)
+            print("Number of Events for: ")
+            print(elapsed)
+            if eventsFlg == false {
+                getAllData()
+                eventsFlg.toggle()
             }
-            return datesWithEvents.contains(calendarDay) ? 1 : 0
+            
+            if datesWithEvents.contains(formatter.string(from: date)) {
+                return 1
+            } else {
+                return 0
+            }
             
         }
         
-        func getAllData() -> [Recipe]{
+        func getAllData() -> Void {
             let persistenceController = PersistenceController.shared
             let context = persistenceController.container.viewContext
             
+            let recipeModel = RecipeViewModel()
             let request = NSFetchRequest<Recipe>(entityName: "Recipe")
             request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
             
             do {
                 let recipe = try context.fetch(request)
-                return recipe
+                
+                if recipeModel.isNewData == true {
+                    self.eventsFlg = false
+                }
+                
+                if recipe.count > 0 {
+                    for i in 0..<recipe.count {
+                        if i == 0 {
+                            datesWithEvents = [formatter.string(from:recipe[i].date!)]
+                        } else {
+                            datesWithEvents.insert(formatter.string(from:recipe[i].date!))
+                        }
+                        print(datesWithEvents)
+                    }
+                } else {
+                    datesWithEvents = []
+                }
+                
             }
             catch {
                 fatalError()
