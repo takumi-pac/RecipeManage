@@ -4,13 +4,16 @@
 //
 //  Created by 松田拓海 on 2022/12/21.
 //
+// TODO: 入力した料理のレシピをWebで検索して表示
 
 import SwiftUI
 
 struct RandamMenuView: View {
     @FetchRequest(entity: Recipe.entity(), sortDescriptors: [NSSortDescriptor(key: "date", ascending: true)],animation: .spring()) var results : FetchedResults<Recipe>
     @Environment(\.managedObjectContext) private var context
-    @State var isShowMenu = false
+    @State var isShowMenu: Bool = false
+    @State var isWebView: Bool = false
+    @State var seachRecipeWord : String = ""
     
     var body: some View {
         
@@ -27,6 +30,8 @@ struct RandamMenuView: View {
             }, label:  {
                 Text("料理をランダムに表示")
             })
+            .padding(50)
+            
         }
     }
 }

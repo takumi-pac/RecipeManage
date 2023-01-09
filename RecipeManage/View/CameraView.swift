@@ -31,7 +31,7 @@ struct CameraView: View {
                     })
                 VStack{
                     HStack(spacing:30){
-                        Text("photo")
+                        Text("写真")
                         image
                             .resizable()
                             .aspectRatio(contentMode: .fill)
@@ -41,13 +41,13 @@ struct CameraView: View {
                             self.source = .photoLibrary
                             self.isImagePicker.toggle()
                         }, label: {
-                            Text("Upload")
+                            Text("フォルダから選択")
                         })
                         Button(action: {
                             self.source = .camera
                             self.isImagePicker.toggle()
                         }, label: {
-                            Text("Take Photo")
+                            Text("撮影")
                         })
                         Spacer()
                     }
@@ -58,7 +58,7 @@ struct CameraView: View {
         .onAppear(){
             loadImage()
         }
-        .navigationBarTitle("Add Recipe", displayMode: .inline)
+        .navigationBarTitle("レシピを追加", displayMode: .inline)
     }
     
     func loadImage() {

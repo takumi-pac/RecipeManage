@@ -16,8 +16,10 @@ struct NewDataSheet: View {
     @State var isActionSheet = false
     @State var isImagePicker = false
     @State var source: UIImagePickerController.SourceType = .photoLibrary
+    @State var cuisine:[String] = ["洋食","和食","中華"]
     
     @State private var image = Image(systemName: "photo")
+    @State private var selection = "選択してください"
     
     @FocusState private var focus: Bool
     
@@ -37,33 +39,51 @@ struct NewDataSheet: View {
                                 Text("")
                             }) //NavigationLink
                     } //HSTACK
-                    HStack{
-                        Text("料理名")
-                        TextEditor(text: $recipeModel.recipeName)
+                    VStack{
+                        
+                        TextField("料理名", text: $recipeModel.recipeName)
                             .padding()
                             .background(Color.primary.opacity(0.1))
                             .frame(height: 100)
                             .cornerRadius(10)
                             .focused($focus)
-                            
-                    } //HSTACK
-                    .padding()
-                    
-                    HStack(spacing: 10){
-                        Text("材料")
                         
-                        TextEditor(text: $recipeModel.ingredient)
-                            .padding()
-                            .background(Color.primary.opacity(0.1))
-                            .frame(width:300 ,height:100)
-                            .cornerRadius(10)
-                            .focused($focus)
+                        VStack {
+                            Picker(selection: $selection, label: Text("料理ジャンル")) {
+                                ForEach(0 ..< cuisine.count, id: \.self) { num in
+                                    Text(self.cuisine[num])
+                                }
+                            }
+                            .onChange(of: selection) { genre in
+                                recipeModel.cuisine = genre
+                            }
+                            .frame(width: 400)
+                            .pickerStyle(WheelPickerStyle())
+                            
+                            Text(recipeModel.cuisine)
+                            
+                        }
+                        
+//                        TextField("料理ジャンル",text: $recipeModel.cuisine)
+//                            .padding()
+//                            .background(Color.primary.opacity(0.1))
+//                            .frame(height: 100)
+//                            .cornerRadius(10)
+//                            .focused($focus)
+//                            .toolbar {
+//                                ToolbarItemGroup(placement: .keyboard) {
+//                                    Spacer()
+//                                    Button("完了") {
+//                                        focus = false
+//                                    }
+//                                }
+//                            }
                     } // HSTACK
                     .padding()
                     
                     Button(action: {recipeModel.writeData(context: context)}, label: {
-                        Label(title:{Text(recipeModel.updateItem == nil ? "Add Now" : "Update")
-                                .font(.title)
+                        Label(title:{Text(recipeModel.updateItem == nil ? "メニュー登録" : "メニュー更新")
+                                .font(.subheadline)
                                 .foregroundColor(.white)
                                 .fontWeight(.bold)
                         },
@@ -73,23 +93,14 @@ struct NewDataSheet: View {
                         })
                         .padding(.vertical)
                         .frame(width:UIScreen.main.bounds.width - 30)
-                        .background(Color.blue)
-                        .cornerRadius(50)
+                        .background(Color.orange)
+                        .cornerRadius(15)
                     }) //BUTTON
                     .padding()
                     .disabled(recipeModel.recipeName == "" ? true : false)
                     .opacity(recipeModel.recipeName == "" ? 0.5 : 1)
                 } //VSTACK
-                .toolbar {
-                    ToolbarItem(placement: .keyboard) {
-                        HStack {
-                            
-                            Button("Done") {
-                                self.focus = false
-                            }
-                        }
-                    }
-                }
+                
             }
         }
         .background(Color.primary.opacity(0.06).ignoresSafeArea(.all, edges: .bottom))

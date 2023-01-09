@@ -56,7 +56,7 @@ struct RecipeListView: View {
                                         Divider()
                                         
                                         Text("材料名")
-                                        Text(recipe.ingredient ?? "")
+                                        Text(recipe.cuisine ?? "")
                                             .font(.footnote)
                                             .fontWeight(.bold)
                                             .padding(.horizontal)
@@ -107,7 +107,7 @@ struct RecipeListView: View {
     func viewModelValueReset() {
         recipeModel.updateItem = nil
         recipeModel.recipeName = ""
-        recipeModel.ingredient = ""
+        recipeModel.cuisine = ""
         recipeModel.date = Date()
         recipeModel.imageData = Data.init()
     }

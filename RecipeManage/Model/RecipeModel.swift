@@ -10,7 +10,7 @@ import CoreData
 
 class RecipeViewModel: ObservableObject {
     @Published var recipeName = ""
-    @Published var ingredient = ""
+    @Published var cuisine = ""
     @Published var date = Date()
     @Published var imageData: Data = Data.init()
     
@@ -22,7 +22,7 @@ class RecipeViewModel: ObservableObject {
         if updateItem != nil {
             updateItem.date = date
             updateItem.recipeName = recipeName
-            updateItem.ingredient = ingredient
+            updateItem.cuisine = cuisine
             updateItem.imageData = imageData
             
             try! context.save()
@@ -30,7 +30,7 @@ class RecipeViewModel: ObservableObject {
             updateItem = nil
             date = Date()
             recipeName = ""
-            ingredient = ""
+            cuisine = ""
             imageData = Data.init()
             isNewData.toggle()
         }
@@ -38,7 +38,7 @@ class RecipeViewModel: ObservableObject {
         let newRecipe = Recipe(context: context)
         newRecipe.date = date
         newRecipe.recipeName = recipeName
-        newRecipe.ingredient = ingredient
+        newRecipe.cuisine = cuisine
         newRecipe.imageData = imageData
         
         
@@ -48,7 +48,7 @@ class RecipeViewModel: ObservableObject {
             
             date = Date()
             recipeName = ""
-            ingredient = ""
+            cuisine = ""
             imageData = Data.init()
         }
         catch {
@@ -61,7 +61,7 @@ class RecipeViewModel: ObservableObject {
         
         date = item.date!
         recipeName = item.recipeName!
-        ingredient = item.ingredient!
+        cuisine = item.cuisine!
         imageData = item.imageData ?? Data.init()
         
         isNewData.toggle()
