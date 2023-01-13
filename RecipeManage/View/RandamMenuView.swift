@@ -38,7 +38,7 @@ struct RandamMenuView: View {
 
 struct RouletteCharacters: View {
     let characters: Array<String.Element>
-    let fontSize: Float = 78
+    let fontSize: Float = 50
     var delay: Double
 
     init(text: String, delay: Double){

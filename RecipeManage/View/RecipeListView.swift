@@ -22,7 +22,7 @@ struct RecipeListView: View {
                 VStack(spacing:0){
                     if results.isEmpty{
                         Spacer()
-                        Text("No Menu")
+                        Text("メニューがありません")
                             .font(.title)
                             .foregroundColor(.primary)
                             .fontWeight(.heavy)
@@ -50,14 +50,14 @@ struct RecipeListView: View {
                                         
                                         Text("料理名")
                                         Text(recipe.recipeName ?? "")
-                                            .font(.title)
+                                            .font(.largeTitle)
                                             .fontWeight(.bold)
                                             .padding(.horizontal)
                                         Divider()
                                         
-                                        Text("材料名")
+                                        Text("料理ジャンル")
                                         Text(recipe.cuisine ?? "")
-                                            .font(.footnote)
+                                            .font(.title)
                                             .fontWeight(.bold)
                                             .padding(.horizontal)
                                     })
@@ -66,13 +66,13 @@ struct RecipeListView: View {
                                         Button(action: {
                                             recipeModel.EditItem(item: recipe)
                                         }, label: {
-                                            Text("Edit")
+                                            Text("編集")
                                         })
                                         Button(action: {
                                             context.delete(recipe)
                                             try! context.save()
                                         }, label: {
-                                            Text("Delete")
+                                            Text("削除")
                                         })
                                     }
                                 }
@@ -80,6 +80,10 @@ struct RecipeListView: View {
                             .padding()
                         })
                     }
+                    Spacer()
+                    
+                    AdmobBannerView()
+                        .frame(width: 500, height:50)
                 }
                 .navigationBarTitle("Home", displayMode: .inline)
             }
@@ -88,7 +92,7 @@ struct RecipeListView: View {
                     .font(.largeTitle)
                     .foregroundColor(.white)
                     .padding(20)
-                    .background(Color.green)
+                    .background(Color.orange)
                     .clipShape(Circle())
                     .padding()
             })

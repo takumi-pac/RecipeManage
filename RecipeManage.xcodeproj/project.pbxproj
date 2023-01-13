@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01021429296D672700044CE3 /* AdmobBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01021428296D672700044CE3 /* AdmobBannerView.swift */; };
 		010CD3BB29529E930038D78C /* RandamMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010CD3BA29529E930038D78C /* RandamMenuView.swift */; };
+		01783002296E908C000A13AE /* RecipeManageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01783001296E908C000A13AE /* RecipeManageTests.swift */; };
 		01C3777229220E0B0078190E /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C3777129220E0B0078190E /* CalendarView.swift */; };
 		01F6E3B9291A480300C5EAC9 /* RecipeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F6E3B8291A480300C5EAC9 /* RecipeListView.swift */; };
 		01FB079429112076007988DD /* RecipeManageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FB079329112076007988DD /* RecipeManageApp.swift */; };
@@ -23,8 +25,22 @@
 		540D34AD0EFA78EC99DC80AC /* Pods_RecipeManage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D4FAA06DA0784F32067C9A /* Pods_RecipeManage.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		01783003296E908C000A13AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01FB078829112076007988DD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 01FB078F29112076007988DD;
+			remoteInfo = RecipeManage;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		01021427296D655200044CE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		01021428296D672700044CE3 /* AdmobBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdmobBannerView.swift; sourceTree = "<group>"; };
 		010CD3BA29529E930038D78C /* RandamMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandamMenuView.swift; sourceTree = "<group>"; };
+		01782FFF296E908C000A13AE /* RecipeManageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipeManageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		01783001296E908C000A13AE /* RecipeManageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeManageTests.swift; sourceTree = "<group>"; };
 		01C3777129220E0B0078190E /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		01F6E3B8291A480300C5EAC9 /* RecipeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListView.swift; sourceTree = "<group>"; };
 		01FB079029112076007988DD /* RecipeManage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeManage.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +60,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		01782FFC296E908C000A13AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		01FB078D29112076007988DD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -55,10 +78,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01783000296E908C000A13AE /* RecipeManageTests */ = {
+			isa = PBXGroup;
+			children = (
+				01783001296E908C000A13AE /* RecipeManageTests.swift */,
+			);
+			path = RecipeManageTests;
+			sourceTree = "<group>";
+		};
 		01FB078729112076007988DD = {
 			isa = PBXGroup;
 			children = (
 				01FB079229112076007988DD /* RecipeManage */,
+				01783000296E908C000A13AE /* RecipeManageTests */,
 				01FB079129112076007988DD /* Products */,
 				899F4942CC52A383D916D93C /* Pods */,
 				5D29ABFA275643D3897F54B9 /* Frameworks */,
@@ -69,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				01FB079029112076007988DD /* RecipeManage.app */,
+				01782FFF296E908C000A13AE /* RecipeManageTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -76,6 +109,7 @@
 		01FB079229112076007988DD /* RecipeManage */ = {
 			isa = PBXGroup;
 			children = (
+				01021427296D655200044CE3 /* Info.plist */,
 				01FB07A929113BFC007988DD /* View */,
 				01FB07A62911215D007988DD /* Model */,
 				01FB079329112076007988DD /* RecipeManageApp.swift */,
@@ -113,6 +147,7 @@
 				01F6E3B8291A480300C5EAC9 /* RecipeListView.swift */,
 				01C3777129220E0B0078190E /* CalendarView.swift */,
 				010CD3BA29529E930038D78C /* RandamMenuView.swift */,
+				01021428296D672700044CE3 /* AdmobBannerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -137,6 +172,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		01782FFE296E908C000A13AE /* RecipeManageTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 01783005296E908C000A13AE /* Build configuration list for PBXNativeTarget "RecipeManageTests" */;
+			buildPhases = (
+				01782FFB296E908C000A13AE /* Sources */,
+				01782FFC296E908C000A13AE /* Frameworks */,
+				01782FFD296E908C000A13AE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				01783004296E908C000A13AE /* PBXTargetDependency */,
+			);
+			name = RecipeManageTests;
+			productName = RecipeManageTests;
+			productReference = 01782FFF296E908C000A13AE /* RecipeManageTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		01FB078F29112076007988DD /* RecipeManage */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 01FB07A329112079007988DD /* Build configuration list for PBXNativeTarget "RecipeManage" */;
@@ -163,9 +216,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1340;
+				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
+					01782FFE296E908C000A13AE = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 01FB078F29112076007988DD;
+					};
 					01FB078F29112076007988DD = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
@@ -185,11 +242,19 @@
 			projectRoot = "";
 			targets = (
 				01FB078F29112076007988DD /* RecipeManage */,
+				01782FFE296E908C000A13AE /* RecipeManageTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		01782FFD296E908C000A13AE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		01FB078E29112076007988DD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -244,6 +309,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		01782FFB296E908C000A13AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01783002296E908C000A13AE /* RecipeManageTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		01FB078C29112076007988DD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -256,6 +329,7 @@
 				01FB07A829112195007988DD /* RecipeModel.swift in Sources */,
 				01FB07A029112079007988DD /* RecipeManage.xcdatamodeld in Sources */,
 				01F6E3B9291A480300C5EAC9 /* RecipeListView.swift in Sources */,
+				01021429296D672700044CE3 /* AdmobBannerView.swift in Sources */,
 				01FB079429112076007988DD /* RecipeManageApp.swift in Sources */,
 				01FB07AF29113E7F007988DD /* CameraView.swift in Sources */,
 				010CD3BB29529E930038D78C /* RandamMenuView.swift in Sources */,
@@ -264,7 +338,55 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		01783004296E908C000A13AE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 01FB078F29112076007988DD /* RecipeManage */;
+			targetProxy = 01783003296E908C000A13AE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		01783006296E908C000A13AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4H5X69X66X;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.takumi-pac.RecipeManageTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RecipeManage.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RecipeManage";
+			};
+			name = Debug;
+		};
+		01783007296E908C000A13AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4H5X69X66X;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.takumi-pac.RecipeManageTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RecipeManage.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RecipeManage";
+			};
+			name = Release;
+		};
 		01FB07A129112079007988DD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -391,12 +513,12 @@
 				DEVELOPMENT_TEAM = 4H5X69X66X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RecipeManage/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "カメラを使用します";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "アルバムを使用します";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -404,9 +526,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.takumi-pac.RecipeManage";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -422,12 +547,12 @@
 				DEVELOPMENT_TEAM = 4H5X69X66X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RecipeManage/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "カメラを使用します";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "アルバムを使用します";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -435,15 +560,27 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.takumi-pac.RecipeManage";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		01783005296E908C000A13AE /* Build configuration list for PBXNativeTarget "RecipeManageTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01783006296E908C000A13AE /* Debug */,
+				01783007296E908C000A13AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		01FB078B29112076007988DD /* Build configuration list for PBXProject "RecipeManage" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

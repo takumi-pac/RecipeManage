@@ -16,10 +16,9 @@ struct NewDataSheet: View {
     @State var isActionSheet = false
     @State var isImagePicker = false
     @State var source: UIImagePickerController.SourceType = .photoLibrary
-    @State var cuisine:[String] = ["洋食","和食","中華"]
     
     @State private var image = Image(systemName: "photo")
-    @State private var selection = "選択してください"
+    @State private var selection = "洋食"
     
     @FocusState private var focus: Bool
     
@@ -39,7 +38,7 @@ struct NewDataSheet: View {
                                 Text("")
                             }) //NavigationLink
                     } //HSTACK
-                    VStack{
+                    VStack {
                         
                         TextField("料理名", text: $recipeModel.recipeName)
                             .padding()
@@ -49,35 +48,17 @@ struct NewDataSheet: View {
                             .focused($focus)
                         
                         VStack {
-                            Picker(selection: $selection, label: Text("料理ジャンル")) {
-                                ForEach(0 ..< cuisine.count, id: \.self) { num in
-                                    Text(self.cuisine[num])
-                                }
-                            }
-                            .onChange(of: selection) { genre in
-                                recipeModel.cuisine = genre
+                            Picker(selection: $recipeModel.cuisine, label: Text("料理ジャンル")) {
+                                Text("洋食").tag("洋食")
+                                Text("和食").tag("和食")
+                                Text("中華").tag("中華")
                             }
                             .frame(width: 400)
                             .pickerStyle(WheelPickerStyle())
                             
-                            Text(recipeModel.cuisine)
                             
                         }
                         
-//                        TextField("料理ジャンル",text: $recipeModel.cuisine)
-//                            .padding()
-//                            .background(Color.primary.opacity(0.1))
-//                            .frame(height: 100)
-//                            .cornerRadius(10)
-//                            .focused($focus)
-//                            .toolbar {
-//                                ToolbarItemGroup(placement: .keyboard) {
-//                                    Spacer()
-//                                    Button("完了") {
-//                                        focus = false
-//                                    }
-//                                }
-//                            }
                     } // HSTACK
                     .padding()
                     

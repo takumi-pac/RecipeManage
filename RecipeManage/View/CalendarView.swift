@@ -11,7 +11,7 @@ import UIKit
 import CoreData
 import FSCalendar
 
-struct CalendarTestView: UIViewRepresentable {
+struct CalendarSubView: UIViewRepresentable {
     @Binding var selectedDate: String
     
     func makeUIView(context: Context) -> FSCalendar {
@@ -60,12 +60,12 @@ struct CalendarTestView: UIViewRepresentable {
     }
     
     class Coordinator: NSObject, FSCalendarDelegate, FSCalendarDataSource {
-        var parent: CalendarTestView
+        var parent: CalendarSubView
         var datesWithEvents: Set<String> = []
         var eventsFlg: Bool = false
         let formatter = DateFormatter()
         
-        init(_ parent:CalendarTestView){
+        init(_ parent:CalendarSubView){
             self.parent = parent
         }
         
@@ -144,7 +144,7 @@ struct CalendarView: View {
     
     var body: some View {
         VStack {
-            CalendarTestView(selectedDate: $selectedDate)
+            CalendarSubView(selectedDate: $selectedDate)
                 .frame(height: 400)
             
             Text(selectedDate)
@@ -173,14 +173,14 @@ struct CalendarView: View {
                                 
                                 Text("料理名")
                                 Text(recipe.recipeName ?? "")
-                                    .font(.title)
+                                    .font(.largeTitle)
                                     .fontWeight(.bold)
                                     .padding(.horizontal)
                                 Divider()
                                 
-                                Text("材料")
+                                Text("料理ジャンル")
                                 Text(recipe.cuisine ?? "")
-                                    .font(.footnote)
+                                    .font(.title)
                                     .fontWeight(.bold)
                                     .padding(.horizontal)
                             })
@@ -188,7 +188,8 @@ struct CalendarView: View {
                     }// FOREACH
                 } // LAZYVSTACK
             }) // SCROLL VIEW
-        }
+            
+        } // VSTACK
     }
 }
 
