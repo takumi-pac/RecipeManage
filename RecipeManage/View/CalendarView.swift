@@ -10,6 +10,7 @@ import SwiftUI
 import UIKit
 import CoreData
 import FSCalendar
+import CalculateCalendarLogic
 
 struct CalendarSubView: UIViewRepresentable {
     @Binding var selectedDate: String
@@ -36,6 +37,7 @@ struct CalendarSubView: UIViewRepresentable {
         fsCalendar.appearance.weekdayFont = UIFont.systemFont(ofSize: 20) //曜日表示のテキストサイズ
         fsCalendar.appearance.weekdayTextColor = .darkGray //曜日表示のテキストカラー
         fsCalendar.appearance.titleWeekendColor = .red //週末（土、日曜の日付表示カラー）
+        
         //カレンダー日付表示
         fsCalendar.appearance.titleFont = UIFont.systemFont(ofSize: 16) //日付のテキストサイズ
         fsCalendar.appearance.titleFont = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.bold) //日付のテキスト、ウェイトサイズ
@@ -59,7 +61,7 @@ struct CalendarSubView: UIViewRepresentable {
         return Coordinator(self)
     }
     
-    class Coordinator: NSObject, FSCalendarDelegate, FSCalendarDataSource {
+    class Coordinator: NSObject, FSCalendarDelegate, FSCalendarDataSource,FSCalendarDelegateAppearance {
         var parent: CalendarSubView
         var datesWithEvents: Set<String> = []
         var eventsFlg: Bool = false
@@ -69,14 +71,64 @@ struct CalendarSubView: UIViewRepresentable {
             self.parent = parent
         }
         
-        func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        // 祝日判定を行い結果を返すメソッド(True:祝日)
+            func judgeHoliday(_ date : Date) -> Bool {
+                //祝日判定用のカレンダークラスのインスタンス
+                let tmpCalendar = Calendar(identifier: .gregorian)
+                // 祝日判定を行う日にちの年、月、日を取得
+                let year = tmpCalendar.component(.year, from: date)
+                let month = tmpCalendar.component(.month, from: date)
+                let day = tmpCalendar.component(.day, from: date)
+                
+                // CalculateCalendarLogic()：祝日判定のインスタンスの生成
+                let holiday = CalculateCalendarLogic()
+                
+                return holiday.judgeJapaneseHoliday(year: year, month: month, day: day)
+            }
 
+
+        // date型 -> 年月日をIntで取得
+            func getDay(_ date:Date) -> (Int,Int,Int){
+                let tmpCalendar = Calendar(identifier: .gregorian)
+                let year = tmpCalendar.component(.year, from: date)
+                let month = tmpCalendar.component(.month, from: date)
+                let day = tmpCalendar.component(.day, from: date)
+                return (year,month,day)
+            }
+            
+        //曜日判定(日曜日:1 〜 土曜日:7)
+            func getWeekIdx(_ date: Date) -> Int{
+                let tmpCalendar = Calendar(identifier: .gregorian)
+                return tmpCalendar.component(.weekday, from: date)
+            }
+            
+        // 土日や祝日の日の文字色を変える
+            func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
+                
+               
+                //祝日判定をする（祝日は赤色で表示する）
+                if self.judgeHoliday(date){
+                    return UIColor.red
+                }
+                //土日の判定を行う（土曜日は青色、日曜日は赤色で表示する）
+                let weekday = self.getWeekIdx(date)
+                if weekday == 1 {   //日曜日
+                    return UIColor.systemRed
+                }
+                else if weekday == 7 {  //土曜日
+                    return UIColor.systemBlue
+                }
+                return nil
+            }
+        
+        func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+            
             let tmpDate = Calendar(identifier: .gregorian)
             let year = tmpDate.component(.year, from: date)
             let month = tmpDate.component(.month, from: date)
             let day = tmpDate.component(.day, from: date)
             parent.selectedDate = "\(year)/\(month)/\(day)"
-
+            
         }
         
         func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
@@ -120,7 +172,7 @@ struct CalendarSubView: UIViewRepresentable {
                         } else {
                             datesWithEvents.insert(formatter.string(from:recipe[i].date!))
                         }
-                        print(datesWithEvents)
+                        
                     }
                 } else {
                     datesWithEvents = []
@@ -189,6 +241,8 @@ struct CalendarView: View {
                 } // LAZYVSTACK
             }) // SCROLL VIEW
             
+            AdmobBannerView()
+                .frame(width: 500, height:50)
         } // VSTACK
     }
 }

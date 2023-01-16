@@ -21,24 +21,30 @@ struct RandamMenuView: View {
             
             if isShowMenu == true {
                 RouletteCharacters(text:randam(arr:results) , delay: 0.3)
-                    .padding()
+                    .padding(50)
             }
             
             Button(action: {
                 isShowMenu.toggle()
-                print(isShowMenu)
             }, label:  {
                 Text("料理をランダムに表示")
+                    .fontWeight(.semibold)
+                            .frame(width: 200, height: 48)
+                            .foregroundColor(Color(.white))
+                            .background(Color(.orange))
+                            .cornerRadius(24)
             })
             .padding(50)
             
+            AdmobBannerView()
+                .frame(width: 500, height:50)
         }
     }
 }
 
 struct RouletteCharacters: View {
     let characters: Array<String.Element>
-    let fontSize: Float = 50
+    let fontSize: Float = 25
     var delay: Double
 
     init(text: String, delay: Double){

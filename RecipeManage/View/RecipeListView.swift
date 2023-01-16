@@ -88,7 +88,7 @@ struct RecipeListView: View {
                 .navigationBarTitle("Home", displayMode: .inline)
             }
             Button(action: {recipeModel.isNewData.toggle()}, label: {
-                Image(systemName: "plus")
+                Image(systemName: "pencil")
                     .font(.largeTitle)
                     .foregroundColor(.white)
                     .padding(20)

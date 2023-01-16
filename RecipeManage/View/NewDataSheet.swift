@@ -68,7 +68,7 @@ struct NewDataSheet: View {
                                 .foregroundColor(.white)
                                 .fontWeight(.bold)
                         },
-                              icon: {Image(systemName: "plus")
+                              icon: {Image(systemName: "pencil")
                                 .font(.title)
                                 .foregroundColor(.white)
                         })

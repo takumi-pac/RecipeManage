@@ -31,7 +31,8 @@ struct CameraView: View {
                     })
                 VStack{
                     HStack(spacing:30){
-                        Text("写真")
+                        Spacer()
+                        
                         image
                             .resizable()
                             .aspectRatio(contentMode: .fill)

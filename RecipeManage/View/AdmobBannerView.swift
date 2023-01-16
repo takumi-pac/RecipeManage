@@ -16,7 +16,7 @@ struct AdmobBannerView: UIViewRepresentable {
         let window = windowScene?.windows.first
         let banner = GADBannerView(adSize: GADAdSizeBanner) // インスタンスを生成
         // 諸々の設定をしていく
-        banner.adUnitID = "ca-app-pub-8659152615389502~6574164559" // 自身の広告IDに置き換える
+        banner.adUnitID = "ca-app-pub-8659152615389502/4042260163" // 自身の広告IDに置き換える
         banner.rootViewController = window!.rootViewController
         banner.load(GADRequest())
         return banner // 最終的にインスタンスを返す
