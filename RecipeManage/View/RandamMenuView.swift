@@ -18,9 +18,10 @@ struct RandamMenuView: View {
     var body: some View {
         
         VStack {
+            Spacer()
             
             if isShowMenu == true {
-                RouletteCharacters(text:randam(arr:results) , delay: 0.3)
+                RouletteCharacters(text:randam(arr:results) , delay: 0)
                     .padding(50)
             }
             
@@ -34,10 +35,10 @@ struct RandamMenuView: View {
                             .background(Color(.orange))
                             .cornerRadius(24)
             })
-            .padding(50)
             
+            Spacer()
             AdmobBannerView()
-                .frame(width: 500, height:50)
+                .frame(width: 320, height:50)
         }
     }
 }
@@ -135,6 +136,8 @@ func randam(arr: FetchedResults<Recipe>) -> String {
 }
 
 struct RandamMenuView_Previews: PreviewProvider {
+    @State static var isShow = false
+    
     static var previews: some View {
         RandamMenuView()
     }

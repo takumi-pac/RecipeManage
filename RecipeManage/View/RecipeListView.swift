@@ -83,7 +83,7 @@ struct RecipeListView: View {
                     Spacer()
                     
                     AdmobBannerView()
-                        .frame(width: 500, height:50)
+                        .frame(width: 320, height:50)
                 }
                 .navigationBarTitle("Home", displayMode: .inline)
             }

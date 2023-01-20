@@ -242,7 +242,7 @@ struct CalendarView: View {
             }) // SCROLL VIEW
             
             AdmobBannerView()
-                .frame(width: 500, height:50)
+                .frame(width: 320, height:50)
         } // VSTACK
     }
 }
