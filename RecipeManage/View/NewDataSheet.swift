@@ -52,6 +52,8 @@ struct NewDataSheet: View {
                                 Text("洋食").tag("洋食")
                                 Text("和食").tag("和食")
                                 Text("中華").tag("中華")
+                                Text("韓国").tag("韓国")
+                                Text("軽食").tag("軽食")
                             }
                             .frame(width: 400)
                             .pickerStyle(WheelPickerStyle())
