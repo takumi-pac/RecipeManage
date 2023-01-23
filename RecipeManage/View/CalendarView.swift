@@ -235,6 +235,14 @@ struct CalendarView: View {
                                     .font(.title)
                                     .fontWeight(.bold)
                                     .padding(.horizontal)
+                                
+                                Divider()
+                                
+                                Text("メモ")
+                                Text(recipe.memo ?? "")
+                                    .font(.footnote)
+                                    .fontWeight(.bold)
+                                    .padding(.horizontal)
                             })
                         } // IF
                     }// FOREACH

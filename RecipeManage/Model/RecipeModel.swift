@@ -11,6 +11,7 @@ import CoreData
 class RecipeViewModel: ObservableObject {
     @Published var recipeName = ""
     @Published var cuisine = ""
+    @Published var memo = ""
     @Published var date = Date()
     @Published var imageData: Data = Data.init()
     
@@ -23,6 +24,7 @@ class RecipeViewModel: ObservableObject {
             updateItem.date = date
             updateItem.recipeName = recipeName
             updateItem.cuisine = cuisine
+            updateItem.memo = memo
             updateItem.imageData = imageData
             
             try! context.save()
@@ -31,6 +33,7 @@ class RecipeViewModel: ObservableObject {
             date = Date()
             recipeName = ""
             cuisine = ""
+            memo = ""
             imageData = Data.init()
             isNewData.toggle()
         }
@@ -39,6 +42,7 @@ class RecipeViewModel: ObservableObject {
         newRecipe.date = date
         newRecipe.recipeName = recipeName
         newRecipe.cuisine = cuisine
+        newRecipe.memo = memo
         newRecipe.imageData = imageData
         
         
@@ -49,6 +53,7 @@ class RecipeViewModel: ObservableObject {
             date = Date()
             recipeName = ""
             cuisine = ""
+            memo = ""
             imageData = Data.init()
         }
         catch {
@@ -62,6 +67,7 @@ class RecipeViewModel: ObservableObject {
         date = item.date!
         recipeName = item.recipeName!
         cuisine = item.cuisine!
+        memo = item.memo!
         imageData = item.imageData ?? Data.init()
         
         isNewData.toggle()

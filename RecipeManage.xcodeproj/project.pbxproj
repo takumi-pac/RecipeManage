@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		01021429296D672700044CE3 /* AdmobBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01021428296D672700044CE3 /* AdmobBannerView.swift */; };
 		010CD3BB29529E930038D78C /* RandamMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010CD3BA29529E930038D78C /* RandamMenuView.swift */; };
+		0154FD5D297D2EEC0024178E /* AddPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0154FD5C297D2EEC0024178E /* AddPickerView.swift */; };
 		01783002296E908C000A13AE /* RecipeManageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01783001296E908C000A13AE /* RecipeManageTests.swift */; };
 		01C3777229220E0B0078190E /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C3777129220E0B0078190E /* CalendarView.swift */; };
 		01F6E3B9291A480300C5EAC9 /* RecipeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F6E3B8291A480300C5EAC9 /* RecipeListView.swift */; };
@@ -39,6 +40,7 @@
 		01021427296D655200044CE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		01021428296D672700044CE3 /* AdmobBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdmobBannerView.swift; sourceTree = "<group>"; };
 		010CD3BA29529E930038D78C /* RandamMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandamMenuView.swift; sourceTree = "<group>"; };
+		0154FD5C297D2EEC0024178E /* AddPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPickerView.swift; sourceTree = "<group>"; };
 		01782FFF296E908C000A13AE /* RecipeManageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipeManageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		01783001296E908C000A13AE /* RecipeManageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeManageTests.swift; sourceTree = "<group>"; };
 		01C3777129220E0B0078190E /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				01C3777129220E0B0078190E /* CalendarView.swift */,
 				010CD3BA29529E930038D78C /* RandamMenuView.swift */,
 				01021428296D672700044CE3 /* AdmobBannerView.swift */,
+				0154FD5C297D2EEC0024178E /* AddPickerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				01FB07A029112079007988DD /* RecipeManage.xcdatamodeld in Sources */,
 				01F6E3B9291A480300C5EAC9 /* RecipeListView.swift in Sources */,
 				01021429296D672700044CE3 /* AdmobBannerView.swift in Sources */,
+				0154FD5D297D2EEC0024178E /* AddPickerView.swift in Sources */,
 				01FB079429112076007988DD /* RecipeManageApp.swift in Sources */,
 				01FB07AF29113E7F007988DD /* CameraView.swift in Sources */,
 				010CD3BB29529E930038D78C /* RandamMenuView.swift in Sources */,
