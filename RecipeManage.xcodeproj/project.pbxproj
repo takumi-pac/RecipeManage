@@ -12,6 +12,7 @@
 		0154FD5D297D2EEC0024178E /* AddPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0154FD5C297D2EEC0024178E /* AddPickerView.swift */; };
 		01783002296E908C000A13AE /* RecipeManageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01783001296E908C000A13AE /* RecipeManageTests.swift */; };
 		01C3777229220E0B0078190E /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C3777129220E0B0078190E /* CalendarView.swift */; };
+		01E9D4E82980C39D00640E74 /* KeyboardObserving in Frameworks */ = {isa = PBXBuildFile; productRef = 01E9D4E72980C39D00640E74 /* KeyboardObserving */; };
 		01F6E3B9291A480300C5EAC9 /* RecipeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F6E3B8291A480300C5EAC9 /* RecipeListView.swift */; };
 		01FB079429112076007988DD /* RecipeManageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FB079329112076007988DD /* RecipeManageApp.swift */; };
 		01FB079629112076007988DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FB079529112076007988DD /* ContentView.swift */; };
@@ -21,7 +22,6 @@
 		01FB07A029112079007988DD /* RecipeManage.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 01FB079E29112079007988DD /* RecipeManage.xcdatamodeld */; };
 		01FB07A829112195007988DD /* RecipeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FB07A729112195007988DD /* RecipeModel.swift */; };
 		01FB07AB29113C11007988DD /* NewDataSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FB07AA29113C11007988DD /* NewDataSheet.swift */; };
-		01FB07AD29113E3F007988DD /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FB07AC29113E3F007988DD /* ImagePicker.swift */; };
 		01FB07AF29113E7F007988DD /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FB07AE29113E7F007988DD /* CameraView.swift */; };
 		540D34AD0EFA78EC99DC80AC /* Pods_RecipeManage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D4FAA06DA0784F32067C9A /* Pods_RecipeManage.framework */; };
 /* End PBXBuildFile section */
@@ -54,7 +54,6 @@
 		01FB079F29112079007988DD /* RecipeManage.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RecipeManage.xcdatamodel; sourceTree = "<group>"; };
 		01FB07A729112195007988DD /* RecipeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeModel.swift; sourceTree = "<group>"; };
 		01FB07AA29113C11007988DD /* NewDataSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDataSheet.swift; sourceTree = "<group>"; };
-		01FB07AC29113E3F007988DD /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		01FB07AE29113E7F007988DD /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		08F74DB86CB4B3000CEEC11A /* Pods-RecipeManage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeManage.release.xcconfig"; path = "Target Support Files/Pods-RecipeManage/Pods-RecipeManage.release.xcconfig"; sourceTree = "<group>"; };
 		5B46F4DCBBD33D863AFEFA52 /* Pods-RecipeManage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeManage.debug.xcconfig"; path = "Target Support Files/Pods-RecipeManage/Pods-RecipeManage.debug.xcconfig"; sourceTree = "<group>"; };
@@ -74,6 +73,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				540D34AD0EFA78EC99DC80AC /* Pods_RecipeManage.framework in Frameworks */,
+				01E9D4E82980C39D00640E74 /* KeyboardObserving in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,7 +113,7 @@
 			children = (
 				01021427296D655200044CE3 /* Info.plist */,
 				01FB07A929113BFC007988DD /* View */,
-				01FB07A62911215D007988DD /* Model */,
+				01FB07A62911215D007988DD /* ViewModel */,
 				01FB079329112076007988DD /* RecipeManageApp.swift */,
 				01FB079729112079007988DD /* Assets.xcassets */,
 				01FB079C29112079007988DD /* Persistence.swift */,
@@ -131,13 +131,12 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		01FB07A62911215D007988DD /* Model */ = {
+		01FB07A62911215D007988DD /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				01FB07A729112195007988DD /* RecipeModel.swift */,
-				01FB07AC29113E3F007988DD /* ImagePicker.swift */,
 			);
-			path = Model;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		01FB07A929113BFC007988DD /* View */ = {
@@ -208,6 +207,9 @@
 			dependencies = (
 			);
 			name = RecipeManage;
+			packageProductDependencies = (
+				01E9D4E72980C39D00640E74 /* KeyboardObserving */,
+			);
 			productName = RecipeManage;
 			productReference = 01FB079029112076007988DD /* RecipeManage.app */;
 			productType = "com.apple.product-type.application";
@@ -240,6 +242,9 @@
 				Base,
 			);
 			mainGroup = 01FB078729112076007988DD;
+			packageReferences = (
+				01E9D4E62980C39D00640E74 /* XCRemoteSwiftPackageReference "KeyboardObserving" */,
+			);
 			productRefGroup = 01FB079129112076007988DD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -328,7 +333,6 @@
 				01FB079D29112079007988DD /* Persistence.swift in Sources */,
 				01FB079629112076007988DD /* ContentView.swift in Sources */,
 				01FB07AB29113C11007988DD /* NewDataSheet.swift in Sources */,
-				01FB07AD29113E3F007988DD /* ImagePicker.swift in Sources */,
 				01FB07A829112195007988DD /* RecipeModel.swift in Sources */,
 				01FB07A029112079007988DD /* RecipeManage.xcdatamodeld in Sources */,
 				01F6E3B9291A480300C5EAC9 /* RecipeListView.swift in Sources */,
@@ -512,7 +516,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"RecipeManage/Preview Content\"";
 				DEVELOPMENT_TEAM = 4H5X69X66X;
 				ENABLE_PREVIEWS = YES;
@@ -530,7 +534,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.01;
+				MARKETING_VERSION = 2.04;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.takumi-pac.RecipeManage";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -549,7 +553,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"RecipeManage/Preview Content\"";
 				DEVELOPMENT_TEAM = 4H5X69X66X;
 				ENABLE_PREVIEWS = YES;
@@ -567,7 +571,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.01;
+				MARKETING_VERSION = 2.04;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.takumi-pac.RecipeManage";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -610,6 +614,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		01E9D4E62980C39D00640E74 /* XCRemoteSwiftPackageReference "KeyboardObserving" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nickffox/KeyboardObserving";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		01E9D4E72980C39D00640E74 /* KeyboardObserving */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 01E9D4E62980C39D00640E74 /* XCRemoteSwiftPackageReference "KeyboardObserving" */;
+			productName = KeyboardObserving;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		01FB079E29112079007988DD /* RecipeManage.xcdatamodeld */ = {

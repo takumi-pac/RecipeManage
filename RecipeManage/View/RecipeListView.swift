@@ -16,6 +16,8 @@ struct RecipeListView: View {
     @FetchRequest(entity: Recipe.entity(), sortDescriptors: [NSSortDescriptor(key: "date", ascending: true)],animation: .spring()) var results : FetchedResults<Recipe>
     @Environment(\.managedObjectContext) private var context
     
+    @State var isNewData = false
+    
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .trailing, vertical: .bottom), content: {
             NavigationView{
@@ -69,11 +71,14 @@ struct RecipeListView: View {
                                             .fontWeight(.bold)
                                             .padding(.horizontal)
                                         
+                                        Divider()
+                                        
                                     })
                                     .foregroundColor(.primary)
                                     .contextMenu{
                                         Button(action: {
                                             recipeModel.EditItem(item: recipe)
+                                            print(recipe)
                                         }, label: {
                                             Text("編集")
                                         })
@@ -122,6 +127,7 @@ struct RecipeListView: View {
         recipeModel.recipeName = ""
         recipeModel.cuisine = ""
         recipeModel.date = Date()
+        recipeModel.memo = ""
         recipeModel.imageData = Data.init()
     }
 }

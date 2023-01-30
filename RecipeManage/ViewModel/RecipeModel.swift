@@ -36,38 +36,40 @@ class RecipeViewModel: ObservableObject {
             memo = ""
             imageData = Data.init()
             isNewData.toggle()
-        }
-        
-        let newRecipe = Recipe(context: context)
-        newRecipe.date = date
-        newRecipe.recipeName = recipeName
-        newRecipe.cuisine = cuisine
-        newRecipe.memo = memo
-        newRecipe.imageData = imageData
-        
-        
-        do {
-            try context.save()
-            isNewData.toggle()
+        } else {
             
-            date = Date()
-            recipeName = ""
-            cuisine = ""
-            memo = ""
-            imageData = Data.init()
+            let newRecipe = Recipe(context: context)
+            newRecipe.date = date
+            newRecipe.recipeName = recipeName
+            newRecipe.cuisine = cuisine
+            newRecipe.memo = memo
+            newRecipe.imageData = imageData
+            
+            
+            do {
+                try context.save()
+                isNewData.toggle()
+                
+                date = Date()
+                recipeName = ""
+                cuisine = ""
+                memo = ""
+                imageData = Data.init()
+            }
+            catch {
+                print(error.localizedDescription)
+            }
         }
-        catch {
-            print(error.localizedDescription)
-        }
+        
     }
     
     func EditItem(item:Recipe) {
         updateItem = item
         
         date = item.date!
-        recipeName = item.recipeName!
-        cuisine = item.cuisine!
-        memo = item.memo!
+        recipeName = item.recipeName ?? ""
+        cuisine = item.cuisine ?? ""
+        memo = item.memo ?? ""
         imageData = item.imageData ?? Data.init()
         
         isNewData.toggle()

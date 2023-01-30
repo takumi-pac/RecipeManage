@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import KeyboardObserving
 
 struct NewDataSheet: View {
     // MARK: - PROPERTY
@@ -16,90 +17,100 @@ struct NewDataSheet: View {
     @State var isActionSheet = false
     @State var isImagePicker = false
     @State var source: UIImagePickerController.SourceType = .photoLibrary
-    @State var pickerList: [String] = ["洋食","和食"]
+    @State var pickerList: [String] = ["洋食","和食","中華","軽食"]
     @State var isShowScreen = false
     
-    @State private var image = Image(systemName: "photo")
+    @State private var image = UIImage(systemName: "photo")
     
     @FocusState private var focus: Bool
     
     var userDefaults = UserDefaults.standard
     var list: [String] = []
-        
+    
     // MARK: - BODY
     var body: some View {
         
         
         NavigationView {
-            ScrollView {
-                VStack {
-                    HStack {
-                        CameraView(recipeModel: recipeModel, imageData: $imageData, source: $source, image: $image, isActionSheet: $isActionSheet, isImagePicker: $isImagePicker)
-                            .padding(.top, 50)
-                        
-                        NavigationLink(
-                            destination: Imagepicker(show: $isImagePicker, image: $imageData, sourceType: source),
-                            isActive:$isImagePicker,
-                            label: {
-                                Text("")
-                            }) //NavigationLink
-                    } //HSTACK
-                    VStack {
-                        
-                        TextField("料理名", text: $recipeModel.recipeName)
-                            .padding()
-                            .background(Color.primary.opacity(0.1))
-                            .frame(height: 100)
-                            .cornerRadius(10)
-                            .focused($focus)
-                            
+            ScrollViewReader { reader in
+                ScrollView {
+                    VStack (spacing:0){
                         
                         HStack {
-                            Picker(selection: $recipeModel.cuisine, label: Text("料理ジャンル")) {
+                            CameraView(recipeModel: recipeModel, imageData: $recipeModel.imageData, source: $source, isActionSheet: $isActionSheet, isImagePicker: $isImagePicker)
+                                .padding(.top, 50)
+                        } //HSTACK
+                        
+                        Group {
+                            
+                            VStack(spacing:10) {
                                 
-                            
-                                if pickerList.isEmpty == false{
-                                    ForEach(pickerList, id: \.self) { picker in
-                                        Text(picker)
-                                    }
-                                }
-                                
-                            }
-                            .frame(width: 300, height:100)
-                            .pickerStyle(WheelPickerStyle())
-                            
-                            Button("編集"){
-                                isShowScreen.toggle()
-                            }
-                            .sheet(isPresented: $isShowScreen, onDismiss: {
-                                pickerList = userDefaults.array(forKey: "pickerList") as? [String] ?? []
-                                print(pickerList)
-                            }) {
-                                AddPickerView(isShowScreen: $isShowScreen)
-                                    .presentationDetents([.medium])
-                            }
-                            
-                            Spacer()
-                        }
-                            
-                            ZStack(alignment: .topLeading) {
-                                TextEditor(text: $recipeModel.memo)
+                                TextField("料理名", text: $recipeModel.recipeName)
                                     .padding()
-                                    .border(Color.primary.opacity(0.5),width: 1)
-                                    .frame(height:150)
-                                    .autocapitalization(.none)
+                                    .background(Color.primary.opacity(0.1))
+                                    .frame(height: 100)
+                                    .cornerRadius(10)
                                     .focused($focus)
                                 
-                                if recipeModel.memo.isEmpty {
-                                    Text("メモ").foregroundColor(Color.primary.opacity(0.5))
+                                Divider()
+                                
+                                HStack{
+                                    Text("料理ジャンル")
+                                    Spacer()
                                 }
-                            } // ZStack
+                                
+                                
+                                HStack {
+                                    
+                                    Picker(selection: $recipeModel.cuisine, label: Text("料理ジャンル")) {
+                                        
+                                        if pickerList.isEmpty == false{
+                                            ForEach(pickerList, id: \.self) { picker in
+                                                Text(picker)
+                                            }
+                                        } else {
+                                            Text("カテゴリを追加してください")
+                                                .font(.footnote)
+                                        }
+                                        
+                                    }
+                                    .frame(width: 300, height:80)
+                                    .pickerStyle(WheelPickerStyle())
+                                    
+                                    Button("編集"){
+                                        isShowScreen.toggle()
+                                    }
+                                    .foregroundColor(.orange)
+                                    .sheet(isPresented: $isShowScreen, onDismiss: {
+                                        pickerList = userDefaults.array(forKey: "pickerList") as? [String] ?? ["洋食","和食","中華","軽食"]
+                                        print(pickerList)
+                                    }) {
+                                        AddPickerView(isShowScreen: $isShowScreen)
+                                            .presentationDetents([.height(UIScreen.main.bounds.height / 1.7)])
+                                    }
+                                    
+                                    Spacer()
+                                    
+                                } // HSTACK
+                                
+                                Divider()
+                                
+                                
+                                TextField("メモ", text: $recipeModel.memo)
+                                    .padding()
+                                    .border(Color.primary.opacity(0.5),width: 1)
+                                    .frame(height:100)
+                                    .autocapitalization(.none)
+                                    .focused($focus)
+                                    .multilineTextAlignment(.leading)
+                                    .ignoresSafeArea(.keyboard,edges: .bottom)
+                                
+                                
+                            } // VSTACK
+                            .padding()
+                            .ignoresSafeArea(.keyboard,edges: .bottom)
                             
-                            
-                            
-                        } // VSTACK
-                        .padding()
-                        
+                        }
                         
                         Button(action: {recipeModel.writeData(context: context)}, label: {
                             Label(title:{Text(recipeModel.updateItem == nil ? "メニュー登録" : "メニュー更新")
@@ -119,25 +130,30 @@ struct NewDataSheet: View {
                         .padding()
                         .disabled(recipeModel.recipeName == "" ? true : false)
                         .opacity(recipeModel.recipeName == "" ? 0.5 : 1)
+                        
                     } //VSTACK
                     
-                }
+                } //SCROLLVIEW
+                
             }
-            .background(Color.primary.opacity(0.06).ignoresSafeArea(.all, edges: .bottom))
-            .onAppear{
-                pickerList = userDefaults.array(forKey: "pickerList") as? [String] ?? []
-            }
-            .onTapGesture {
-                focus = false
-            }
+            
         }
-    
+        .background(Color.primary.opacity(0.06).ignoresSafeArea(.all, edges: .bottom))
+        .onAppear{
+            pickerList = userDefaults.array(forKey: "pickerList") as? [String] ?? ["洋食","和食","中華","軽食"]
+        }
+        .onTapGesture {
+            focus = false
+        }
+        
     }
+    
+}
 
 
-    
-    struct NewDataSheet_Previews: PreviewProvider {
-        static var previews: some View {
-            NewDataSheet(recipeModel: RecipeViewModel())
-        }
+
+struct NewDataSheet_Previews: PreviewProvider {
+    static var previews: some View {
+        NewDataSheet(recipeModel: RecipeViewModel())
     }
+}

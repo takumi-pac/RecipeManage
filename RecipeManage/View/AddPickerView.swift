@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AddPickerView: View {
     @Environment(\.managedObjectContext) var context
-    @State var pickerList: [String] = ["洋食","和食"]
+    @State var pickerList: [String] = ["洋食","和食","中華","軽食"]
     @State var addPicker: String = ""
     @Binding var isShowScreen: Bool
     @FocusState private var focus: Bool
@@ -17,18 +17,17 @@ struct AddPickerView: View {
     
     var userDefaults = UserDefaults.standard
     
-//    init() {
-//        pickerList = userDefaults.array(forKey: "pickerList") as? [String] ?? []
-//    }
-    
     var body: some View {
         
         VStack {
-            HStack{
+            Spacer()
+            
+            HStack {
                 Button("閉じる") {
-                    isShowScreen.toggle()
+                    isShowScreen = false
                 }
                 .padding()
+                .foregroundColor(.orange)
                 
                 Spacer()
             }
@@ -40,12 +39,16 @@ struct AddPickerView: View {
                 .frame(width: 400)
                 .focused($focus)
             
-            Button("カテゴリを追加"){
+            Button("追加"){
                 pickerList.append(addPicker)
                 userDefaults.set(pickerList, forKey: "pickerList")
                 addPicker = ""
-                
+                print(pickerList)
             } //Button
+            .foregroundColor(.white)
+            .frame(width:UIScreen.main.bounds.width - 300,height: 45)
+            .background(Color.orange)
+            .cornerRadius(15)
             
             List {
                 ForEach(0..<pickerList.count, id: \.self) { index in
@@ -58,10 +61,9 @@ struct AddPickerView: View {
             }
             .frame(height:300)
             
-            
         } //VStack
         .onAppear{
-            pickerList = userDefaults.array(forKey: "pickerList") as? [String] ?? []
+            pickerList = userDefaults.array(forKey: "pickerList") as? [String] ?? ["洋食","和食","中華","軽食"]
         }
         .onTapGesture {
             focus = false
